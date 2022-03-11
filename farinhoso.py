@@ -119,3 +119,6 @@ for product in products:
     # Character counter
         #t = len(price_format)
             #print(t)
+        
+        
+        # alterado
