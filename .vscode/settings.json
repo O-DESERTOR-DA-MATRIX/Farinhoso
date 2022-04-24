@@ -1,0 +1,7 @@
+{
+    "coderunner.executable": "venv/bin/coderunner",
+    "python.pythonPath": "venv/bin/python",
+    "code-runner.executorMap": {
+        "python": "venv/bin/python"
+    }
+}

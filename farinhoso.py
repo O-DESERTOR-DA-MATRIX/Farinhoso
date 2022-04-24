@@ -1,18 +1,19 @@
 # Date and time structure
+import requests
+from bs4 import BeautifulSoup
 from datetime import datetime
 
 data_e_hora_atuais = datetime.now()
 data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y | %H:%M')
 
 # Request structure
-from bs4 import BeautifulSoup
-import requests
 
 headers = {'Mozilla/5.0'}
 
 url_base = 'https://lista.mercadolivre.com.br/'
 
-product_name = input('Digite um produto para pesquisa de item')
+# product_name = input('Digite um produto para pesquisa de item')
+product_name = 'galaxy note 20'
 
 response = requests.get(url_base + product_name)
 
@@ -27,7 +28,8 @@ products = website.findAll('div', attrs={'class': 'andes-card andes-card--flat a
 for product in products:
     title = product.find('h2', attrs={'class': 'ui-search-item__title'})
 
-    price = product.find('div', attrs={'class': 'ui-search-price__second-line'})
+    price = product.find(
+        'div', attrs={'class': 'ui-search-price__second-line'})
 
     price_format = price.text
     p2 = price_format
@@ -98,7 +100,6 @@ for product in products:
 
 # Arrays to manipulate
 
-
     # for a_title in title:
     # title_array = [a_title]
     # print(title_array)
@@ -112,10 +113,9 @@ for product in products:
     # link_array = [a_link.text, link['href']]
     # print(link_array)
 
-
     print('Data e horário da consulta: {} \n Título do produto: {} \n Preço do produto: R$ {} \n Link do produto: {} \n'
           .format(data_e_hora_em_texto, title.text, p2, link['href']))
 
     # Character counter
-        #t = len(price_format)
-            #print(t)
+    #t = len(price_format)
+    # print(t)
